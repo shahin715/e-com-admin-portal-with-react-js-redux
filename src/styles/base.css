@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+body {
+    @apply font-manrope text-sm leading-5 antialiased [text-rendering:optimizeLegibility];
+}
+
+.container-box {
+    @apply container mx-auto;
+}

@@ -1,0 +1,597 @@
+export const mockData = {
+    products: [
+        {
+            id: 1,
+            name: "Product 1",
+            description: "Description for Product 1",
+            price: 29.99,
+            image: "https://via.placeholder.com/150",
+            category: "Category 1",
+            rating: 4.5,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Red",
+                size: "M",
+                weight: "1kg",
+            },
+            relatedProducts: [
+                {
+                    id: 2,
+                    name: "Related Product 1",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 3,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+        {
+            id: 2,
+            name: "Product 2",
+            description: "Description for Product 2",
+            price: 19.99,
+            image: "https://via.placeholder.com/150",
+            category: "Category 2",
+            rating: 4.0,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Blue",
+                size: "L",
+                weight: "1.2kg",
+            },
+            relatedProducts: [
+                {
+                    id: 1,
+                    name: "Related Product 1",
+                    price: 29.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 3,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+        {
+            id: 3,
+            name: "Product 3",
+            description: "Description for Product 3",
+            price: 39.99,
+            image: "https://via.placeholder.com/150",
+            category: "Category 3",
+            rating: 4.8,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Green",
+                size: "XL",
+                weight: "1.5kg",
+            },
+            relatedProducts: [
+                {
+                    id: 1,
+                    name: "Related Product 1",
+                    price: 29.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 2,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+        {
+            id: 4,
+            name: "Product 4",
+            description: "Description for Product 4",
+            price: 49.99,
+            image: "https://via.placeholder.com/150",
+            category: "Category 4",
+            rating: 4.2,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Yellow",
+                size: "S",
+                weight: "1.8kg",
+            },
+            relatedProducts: [
+                {
+                    id: 1,
+                    name: "Related Product 1",
+                    price: 29.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 2,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+        {
+            id: 5,
+            name: "Product 5",
+            description: "Description for Product 5",
+            price: 59.99,
+            image: "https://via.placeholder.com/150",
+            category: "Category 5",
+            rating: 4.6,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Purple",
+                size: "M",
+                weight: "2kg",
+            },
+            relatedProducts: [
+                {
+                    id: 1,
+                    name: "Related Product 1",
+                    price: 29.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 2,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+    ],
+    categories: [
+        {
+            id: 1,
+            name: "Category 1",
+            description: "Description for Category 1",
+            image: "https://via.placeholder.com/150",
+            products: [
+                {
+                    id: 1,
+                    name: "Product 1",
+                    description: "Description for Product 1",
+                    price: 29.99,
+                    image: "https://via.placeholder.com/150",
+                    rating: 4.5,
+                    stock: 100,
+                    reviews: [
+                        {
+                            id: 1,
+                            user: "User 1",
+                            comment: "Great product!",
+                            rating: 5,
+                        },
+                        {
+                            id: 2,
+                            user: "User 2",
+                            comment: "Not bad.",
+                            rating: 4,
+                        },
+                    ],
+                    specifications: {
+                        color: "Red",
+                        size: "M",
+                        weight: "1kg",
+                    },
+                    images: [
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                    ],
+                    relatedProducts: [
+                        {
+                            id: 2,
+                            name: "Related Product 1",
+                            price: 19.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                        {
+                            id: 3,
+                            name: "Related Product 2",
+                            price: 24.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                    ],
+                },
+                {
+                    id: 2,
+                    name: "Product 2",
+                    description: "Description for Product 2",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                    rating: 4.0,
+                    stock: 100,
+                    reviews: [
+                        {
+                            id: 1,
+                            user: "User 1",
+                            comment: "Great product!",
+                            rating: 5,
+                        },
+                        {
+                            id: 2,
+                            user: "User 2",
+                            comment: "Not bad.",
+                            rating: 4,
+                        },
+                    ],
+                    specifications: {
+                        color: "Red",
+                        size: "M",
+                        weight: "1kg",
+                    },
+                    images: [
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                    ],
+                    relatedProducts: [
+                        {
+                            id: 2,
+                            name: "Related Product 1",
+                            price: 19.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                        {
+                            id: 3,
+                            name: "Related Product 2",
+                            price: 24.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                    ],
+                },
+                {
+                    id: 2,
+                    name: "Product 2",
+                    description: "Description for Product 2",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                    rating: 4.0,
+                    stock: 100,
+                    reviews: [
+                        {
+                            id: 1,
+                            user: "User 1",
+                            comment: "Great product!",
+                            rating: 5,
+                        },
+                        {
+                            id: 2,
+                            user: "User 2",
+                            comment: "Not bad.",
+                            rating: 4,
+                        },
+                    ],
+                    specifications: {
+                        color: "Red",
+                        size: "M",
+                        weight: "1kg",
+                    },
+                    images: [
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                    ],
+                    relatedProducts: [
+                        {
+                            id: 2,
+                            name: "Related Product 1",
+                            price: 19.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                        {
+                            id: 3,
+                            name: "Related Product 2",
+                            price: 24.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                    ],
+                },
+                {
+                    id: 2,
+                    name: "Product 2",
+                    description: "Description for Product 2",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                    rating: 4.0,
+                    stock: 100,
+                    reviews: [
+                        {
+                            id: 1,
+                            user: "User 1",
+                            comment: "Great product!",
+                            rating: 5,
+                        },
+                        {
+                            id: 2,
+                            user: "User 2",
+                            comment: "Not bad.",
+                            rating: 4,
+                        },
+                    ],
+                    specifications: {
+                        color: "Red",
+                        size: "M",
+                        weight: "1kg",
+                    },
+                    images: [
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                    ],
+                    relatedProducts: [
+                        {
+                            id: 2,
+                            name: "Related Product 1",
+                            price: 19.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                        {
+                            id: 3,
+                            name: "Related Product 2",
+                            price: 24.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                    ],
+                },
+                {
+                    id: 2,
+                    name: "Product 2",
+                    description: "Description for Product 2",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                    rating: 4.0,
+                    stock: 100,
+                    reviews: [
+                        {
+                            id: 1,
+                            user: "User 1",
+                            comment: "Great product!",
+                            rating: 5,
+                        },
+                        {
+                            id: 2,
+                            user: "User 2",
+                            comment: "Not bad.",
+                            rating: 4,
+                        },
+                    ],
+                    specifications: {
+                        color: "Red",
+                        size: "M",
+                        weight: "1kg",
+                    },
+                    images: [
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                    ],
+                    relatedProducts: [
+                        {
+                            id: 2,
+                            name: "Related Product 1",
+                            price: 19.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                        {
+                            id: 3,
+                            name: "Related Product 2",
+                            price: 24.99,
+                            image: "https://via.placeholder.com/150",
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 2,
+            name: "Product 2",
+            description: "Description for Product 2",
+            price: 19.99,
+            image: "https://via.placeholder.com/150",
+            rating: 4.0,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Red",
+                size: "M",
+                weight: "1kg",
+            },
+            images: [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+            ],
+            relatedProducts: [
+                {
+                    id: 2,
+                    name: "Related Product 1",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 3,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+        {
+            id: 2,
+            name: "Product 2",
+            description: "Description for Product 2",
+            price: 19.99,
+            image: "https://via.placeholder.com/150",
+            rating: 4.0,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Red",
+                size: "M",
+                weight: "1kg",
+            },
+            images: [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+            ],
+            relatedProducts: [
+                {
+                    id: 2,
+                    name: "Related Product 1",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 3,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+        {
+            id: 2,
+            name: "Product 2",
+            description: "Description for Product 2",
+            price: 19.99,
+            image: "https://via.placeholder.com/150",
+            rating: 4.0,
+            stock: 100,
+            reviews: [
+                {
+                    id: 1,
+                    user: "User 1",
+                    comment: "Great product!",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    user: "User 2",
+                    comment: "Not bad.",
+                    rating: 4,
+                },
+            ],
+            specifications: {
+                color: "Red",
+                size: "M",
+                weight: "1kg",
+            },
+            images: [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+            ],
+            relatedProducts: [
+                {
+                    id: 2,
+                    name: "Related Product 1",
+                    price: 19.99,
+                    image: "https://via.placeholder.com/150",
+                },
+                {
+                    id: 3,
+                    name: "Related Product 2",
+                    price: 24.99,
+                    image: "https://via.placeholder.com/150",
+                },
+            ],
+        },
+    ],
+}

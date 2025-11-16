@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@import '@fontsource/montserrat';
+@import './styles/base.css';
+
+@theme {
+    --font-manrope: 'Montserrat', sans-serif;
+    --shadow-soft: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px,
+        rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+    --shadow-soft-dark: 0 3px 10px 0 rgb(25 25 25 / 30%);
+    --shadow-custom-light: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    --ease-elastic: cubic-bezier(0.53, 0.21, 0.29, 0.67);
+}
