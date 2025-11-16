@@ -13,6 +13,7 @@ const ROUTE_REGISTER = '/register'
 const ROUTE_DASHBOARD = "/dashboard";
 const ROOT_PROFILE = "/profile";
 const ROUTE_MY_PROFILE = joinPaths(ROOT_PROFILE, "/my-profile");
+const ROUTE_BILLS = "/bills";
 
 // Public Routes
 const ROUTE_HOME = "/home";
@@ -33,6 +34,7 @@ const routePaths = {
     ROUTE_MY_PROFILE,
     ROOT_PROFILE,
     ROUTE_DASHBOARD,
+    ROUTE_BILLS,
 
     // Public Routes
     ROUTE_HOME,

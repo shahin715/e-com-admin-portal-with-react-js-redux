@@ -102,62 +102,69 @@
  * - Use absolute paths for consistency.
  */
 
-import { Navigate } from 'react-router';
-import routePaths from '@/constants/routePaths.constant';
-import { NAV_TYPE } from '@/constants/app.constant';
-import { navigationMenus } from '../navigation/navigationMenus';
-import RootLayout from '../layouts';
+import { Navigate } from "react-router";
+import routePaths from "@/constants/routePaths.constant";
+import { NAV_TYPE } from "@/constants/app.constant";
+import { navigationMenus } from "../navigation/navigationMenus";
+import RootLayout from "../layouts";
 
 const createRouteFromMenu = (menu) => {
-    // Base case for item or hidden without children
-    if (
-        menu.type === NAV_TYPE.ITEM ||
-        (menu.type === NAV_TYPE.HIDDEN &&
-            (!menu.childs || menu.childs.length === 0))
-    ) {
-        return {
-            path: menu.path,
-            lazy: async () => ({
-                Component: menu.component,
-            }),
-        };
-    }
+  // Base case for item or hidden without children
+  if (
+    menu.type === NAV_TYPE.ITEM ||
+    (menu.type === NAV_TYPE.HIDDEN &&
+      (!menu.childs || menu.childs.length === 0))
+  ) {
+    return {
+      path: menu.path,
+      lazy: async () => ({
+        Component: menu.component,
+      }),
+    };
+  }
 
-    // For COLLAPSE or HIDDEN with children - create nested routes recursively
-    if (
-        (menu.type === NAV_TYPE.COLLAPSE || menu.type === NAV_TYPE.HIDDEN) &&
-        menu.childs &&
-        menu.childs.length > 0
-    ) {
-        return {
-            path: menu.path,
-            children: menu.childs.map(createRouteFromMenu),
-        };
-    }
+  // For COLLAPSE or HIDDEN with children - create nested routes recursively
+  if (
+    (menu.type === NAV_TYPE.COLLAPSE || menu.type === NAV_TYPE.HIDDEN) &&
+    menu.childs &&
+    menu.childs.length > 0
+  ) {
+    return {
+      path: menu.path,
+      children: menu.childs.map(createRouteFromMenu),
+    };
+  }
 
-    // Fallback: return a route with component if defined, else undefined
-    return menu.component
-        ? {
-              path: menu.path,
-              lazy: async () => ({
-                  Component: menu.component,
-              }),
-          }
-        : undefined;
+  // Fallback: return a route with component if defined, else undefined
+  return menu.component
+    ? {
+        path: menu.path,
+        lazy: async () => ({
+          Component: menu.component,
+        }),
+      }
+    : undefined;
 };
 
 const routes = navigationMenus?.map(createRouteFromMenu).filter(Boolean);
 
 const protectedRoutes = {
-    id: 'protected',
-    Component: RootLayout,
-    children: [
-        {
-            index: true,
-            element: <Navigate to={routePaths.ROUTE_DASHBOARD} />,
-        },
-        ...routes,
-    ],
+  id: "protected",
+  Component: RootLayout,
+  children: [
+    {
+      index: true,
+      element: <Navigate to={routePaths.ROUTE_DASHBOARD} />,
+    },
+    {
+      path: "/bills",
+      lazy: async () => ({
+        Component: (await import("@/app/pages/bills")).default,
+      }),
+    },
+
+    ...routes,
+  ],
 };
 
 export { protectedRoutes };

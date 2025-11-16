@@ -23,6 +23,7 @@ const ghostRoutes = {
         Component: (await import("@/app/pages/auth/register")).default,
       }),
     },
+     
   ],
 };
 

@@ -1,17 +1,14 @@
-import { Outlet } from 'react-router';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Sidebar from "@/app/layouts/Sidebar";
 
-function RootLayout() {
-    return (
-        <>
-            <Header />
-            <main>
-                <Outlet />
-            </main>
-            <Footer />
-        </>
-    );
+// src/app/layouts/index.jsx  (RootLayout)
+import { Outlet } from "react-router";
+export default function RootLayout(){
+  return (
+    <div className="app-root">
+      <Sidebar />
+      <main><Outlet /></main>
+    </div>
+  )
 }
 
-export default RootLayout;
+
