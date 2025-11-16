@@ -1,7 +1,7 @@
 import { environment } from "../configs/environment.config";
 
 // Application Constants
-export const isAuthenticated = true;
+export const isAuthenticated = false;
 
 // Auth Token Name from environment config
 export const AUTH_TOKEN = environment.authTokenName;

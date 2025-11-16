@@ -5,7 +5,9 @@ import { joinPaths } from "@/utils/joinPaths";
 const REDIRECT_URL_KEY = "redirect";
 
 // Ghost Routes
-const ROUTE_GHOST_ENTRY_PATH = "/login";
+const ROUTE_GHOST_ENTRY_PATH = "/logi";
+const ROUTE_LOGIN = '/login'
+const ROUTE_REGISTER = '/register'
 
 // Protected Routes
 const ROUTE_DASHBOARD = "/dashboard";
@@ -13,7 +15,7 @@ const ROOT_PROFILE = "/profile";
 const ROUTE_MY_PROFILE = joinPaths(ROOT_PROFILE, "/my-profile");
 
 // Public Routes
-const ROUTE_HOME = "/";
+const ROUTE_HOME = "/home";
 const ROUTE_ABOUT = "/about";
 const ROUTE_CONTACT = "/contact";
 const ROUTE_SHOPS = "/shops";
@@ -24,6 +26,8 @@ const routePaths = {
 
     // Ghost Routes
     ROUTE_GHOST_ENTRY_PATH,
+    ROUTE_LOGIN,
+    ROUTE_REGISTER,
 
     // Protected Routes
     ROUTE_MY_PROFILE,

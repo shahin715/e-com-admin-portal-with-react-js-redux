@@ -1,57 +1,72 @@
-// src/app/pages/auth/index.jsx
+// src/app/pages/auth/register/index.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router";
 import bcrypt from "bcryptjs";
 import routePaths from "@/constants/routePaths.constant";
 
-export default function Login() {
-  const [identifier, setIdentifier] = useState(""); // email
+export default function Register() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const registerPath = routePaths?.ROUTE_REGISTER || "/register";
+  const loginPath = routePaths?.ROUTE_GHOST_ENTRY_PATH || "/login";
   const dashboardPath = routePaths?.ROUTE_DASHBOARD || "/dashboard";
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    if (!identifier.trim() || !password) {
-      alert("Please enter email and password.");
+    // basic validation
+    if (!firstName.trim() || !lastName.trim() || !email.trim() || !password) {
+      alert("Please fill all required fields.");
       return;
     }
 
     setSubmitting(true);
 
     try {
+      // load existing users (array) or empty
       const raw = localStorage.getItem("users");
       const users = raw ? JSON.parse(raw) : [];
 
-      const user = users.find((u) => u.email.toLowerCase() === identifier.trim().toLowerCase());
-      if (!user) {
+      // check duplicate email
+      const exists = users.some((u) => u.email.toLowerCase() === email.toLowerCase());
+      if (exists) {
         setSubmitting(false);
-        alert("No account found with this email. Please register first.");
+        alert("An account with this email already exists. Please login or use another email.");
         return;
       }
 
-      const matched = bcrypt.compareSync(password, user.password);
-      if (!matched) {
-        setSubmitting(false);
-        alert("Invalid password.");
-        return;
-      }
+      // hash password (synchronous)
+      const salt = bcrypt.genSaltSync(10);
+      const hashed = bcrypt.hashSync(password, salt);
 
-      // success -> set demo auth token and user info
-      const token = btoa(`${user.id}:${user.email}:${Date.now()}`);
+      const newUser = {
+        id: Date.now(),
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim().toLowerCase(),
+        password: hashed,
+        createdAt: new Date().toISOString(),
+      };
+
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      // optionally auto-login after registration: create a simple token and save
+      const token = btoa(`${newUser.id}:${newUser.email}:${Date.now()}`); // simple demo token
       localStorage.setItem("auth_token", token);
-      localStorage.setItem("auth_user", JSON.stringify({ id: user.id, email: user.email, firstName: user.firstName }));
+      localStorage.setItem("auth_user", JSON.stringify({ id: newUser.id, email: newUser.email, firstName: newUser.firstName }));
 
       setSubmitting(false);
+      // navigate to dashboard (or login flow)
       navigate(dashboardPath);
     } catch (err) {
-      console.error("Login error:", err);
+      console.error("Register error:", err);
       setSubmitting(false);
-      alert("Login failed. See console for details.");
+      alert("Something went wrong while registering. Check console.");
     }
   };
 
@@ -68,22 +83,58 @@ export default function Login() {
       {/* RIGHT */}
       <main className="bg-gray-50 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Let's Start</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-6">Create an account</h1>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleRegister} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm text-gray-600" htmlFor="firstName">
+                  First name
+                </label>
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="John"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-4 focus:ring-purple-200"
+                  autoComplete="given-name"
+                  aria-required="true"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-gray-600" htmlFor="lastName">
+                  Last name
+                </label>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Doe"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-4 focus:ring-purple-200"
+                  autoComplete="family-name"
+                  aria-required="true"
+                />
+              </div>
+            </div>
+
             <div>
-              <label className="block text-sm text-gray-600" htmlFor="identifier">
+              <label className="block text-sm text-gray-600" htmlFor="email">
                 Email
               </label>
               <input
-                id="identifier"
-                name="identifier"
+                id="email"
+                name="email"
                 type="email"
-                value={identifier}
-                onChange={(e) => setIdentifier(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@domain.com"
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-4 focus:ring-purple-200"
-                autoComplete="username"
+                autoComplete="email"
                 aria-required="true"
               />
             </div>
@@ -98,9 +149,9 @@ export default function Login() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                placeholder="Create a password"
                 className="w-full pr-12 px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-4 focus:ring-purple-200"
-                autoComplete="current-password"
+                autoComplete="new-password"
                 aria-required="true"
               />
 
@@ -130,14 +181,14 @@ export default function Login() {
               disabled={submitting}
               className="w-full inline-flex items-center justify-center px-4 py-3 rounded-xl bg-gradient-to-b from-[#5c038d] to-[#7009b3] text-white font-semibold shadow-sm hover:opacity-95 disabled:opacity-70"
             >
-              {submitting ? "Please wait..." : "Login"}
+              {submitting ? "Please wait..." : "Sign up"}
             </button>
           </form>
 
           <div className="mt-6 text-sm text-center text-gray-600">
-            Don't have an account?{" "}
-            <Link to={registerPath} className="font-medium text-purple-700 hover:underline">
-              Sign up
+            Already have an account?{" "}
+            <Link to={loginPath} className="font-medium text-purple-700 hover:underline">
+              Login
             </Link>
           </div>
         </div>
